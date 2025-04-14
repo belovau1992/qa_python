@@ -81,10 +81,10 @@ class TestBooksCollector:
     def test_get_books_for_children(self, collector):
         collector.add_new_book('Синяя')
         collector.set_book_genre('Синяя', 'Фэнтези')
-        collector.add_new_book('Что делать, если ваш кот хочет вас убить')
-        collector.set_book_genre('Что делать, если ваш кот хочет вас убить', 'Приключение')
+        collector.add_new_book('Ходячие мертвецы')
+        collector.set_book_genre('Ходячие мертвецы', 'Ужасы')
         children_books = collector.get_books_for_children()
-        assert 'Синяя' in children_books and len(children_books) == 1
+        assert 'Синяя' in children_books and len(children_books) == 1 and 'Ходячие мертвецы' not in children_books
 
     def test_delete_book_from_favorites(self, collector):
         collector.add_new_book('Синяя')
