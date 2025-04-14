@@ -27,8 +27,8 @@ class TestBooksCollector:
         favorites = collector.get_list_of_favorites_books
         assert 'Синяя' in favorites
 
-    def test_add_book_in_favorites_len(self,collector_with_favorites):
-        collector_with_favorites.add_book_in_favorites('Перспективная и асинхронная база знаний')
+    def test_add_book_in_favorites_len(self,collector):
+        collector.add_book_in_favorites('Перспективная и асинхронная база знаний')
         favorites = collector.get_list_of_favorites_books()
         assert len(favorites) > 1
 
