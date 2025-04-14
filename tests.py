@@ -23,11 +23,13 @@ class TestBooksCollector:
         assert len(collector.get_books_rating()) == 2
 
     def test_add_book_in_favorites(self, collector):
+        collector.add_new_book('Синяя')
         collector.add_book_in_favorites('Синяя')
-        favorites = collector.get_list_of_favorites_books
+        favorites = collector.get_list_of_favorites_books()
         assert 'Синяя' in favorites
 
     def test_add_book_in_favorites_len(self,collector):
+        collector.add_new_book('Перспективная и асинхронная база знаний')
         collector.add_book_in_favorites('Перспективная и асинхронная база знаний')
         favorites = collector.get_list_of_favorites_books()
         assert len(favorites) > 1
@@ -41,6 +43,8 @@ class TestBooksCollector:
         ]
     )
     def test_add_book_in_favorites_quantity(self, collector, name, collector_count):
+        for collector_name in name:
+            collector.add_new_book(collector_name)
         for collector_name in name:
             collector.add_book_in_favorites(collector_name)
         favorites = collector.get_list_of_favorites_books()
