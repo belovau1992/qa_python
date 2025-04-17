@@ -57,11 +57,12 @@ class TestBooksCollector:
         collector.set_book_genre(book_name, genre)
         assert collector.books_genre[book_name] == genre
 
-    def test_get_book_genre(self, collector):
-        collector.add_new_book('Гордость и предубеждение и зомби')
-        collector.set_book_genre('Гордость и предубеждение и зомби', 'Роман')
-        genre = collector.get_book_genre('Гордость и предубеждение и зомби')
-        assert genre == 'Роман'
+    def test_get_book_genre_existing_book(self, collector):
+        book_name = 'Гордость и предубеждение и зомби'
+        genre = 'Роман'
+        collector.add_new_book(book_name)
+        collector.books_genre[book_name] = genre
+        assert collector.get_book_genre(book_name) == genre
 
     def test_get_books_with_specific_genre(self,collector):
         collector.add_new_book('Гордость и предубеждение и зомби')
