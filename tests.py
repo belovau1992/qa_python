@@ -50,10 +50,12 @@ class TestBooksCollector:
         favorites = collector.get_list_of_favorites_books()
         assert len(favorites) == collector_count
 
-    def test_set_book_genre(self, collector):
-        collector.add_new_book('Гордость и предубеждение и зомби')
-        collector.set_book_genre('Гордость и предубеждение и зомби', 'Роман')
-        assert collector.get_book_genre('Гордость и предубеждение и зомби') == 'Роман'
+    def test_set_book_genre_success(self, collector):
+        book_name = 'Гордость и предубеждение и зомби'
+        collector.add_new_book(book_name)
+        genre = 'Роман'
+        collector.set_book_genre(book_name, genre)
+        assert collector.books_genre[book_name] == genre
 
     def test_get_book_genre(self, collector):
         collector.add_new_book('Гордость и предубеждение и зомби')
